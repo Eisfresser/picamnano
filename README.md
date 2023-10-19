@@ -66,4 +66,7 @@ sudo docker run \
 
 ```
 
-Open RTSP stream in VLC with rtsp://192.168.1.240:8554/cam
+WebRTC http://picam.fqp.ch:8889/cam
+HLS http://picam.fqp.ch:8888/cam/
+RTSP vlc rtsp://picam.fqp.ch:8554/cam
+RTMP vlc rtmp://picam.fqp.ch/cam
