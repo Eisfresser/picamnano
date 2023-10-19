@@ -24,6 +24,24 @@ sudo reboot now
 libcamera-hello
 ```
 
+### Set fixed IP address
+
+```bash
+sudo vi /etc/resolv.conf
+nameserver 192.168.1.4
+
+sudo vi /etc/dhcpcd.conf
+interface wlan0
+static ip_address=192.168.1.12/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.4 8.8.8.8
+```
+
+Reboot and add to DNS:
+
+- picam.fqp.ch
+- picam.local
+
 ### Install MediaMTX (formerly rtsp-simple-server) 
 
 <https://github.com/bluenviron/mediamtx>
@@ -49,4 +67,3 @@ sudo docker run \
 ```
 
 Open RTSP stream in VLC with rtsp://192.168.1.240:8554/cam
-
