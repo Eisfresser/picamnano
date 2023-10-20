@@ -377,9 +377,9 @@ pathDefaults:
   # ID of the camera
   rpiCameraCamID: 0
   # width of frames
-  rpiCameraWidth: 640
+  rpiCameraWidth: 1000
   # height of frames
-  rpiCameraHeight: 480
+  rpiCameraHeight: 800
   # flip horizontally
   rpiCameraHFlip: false
   # flip vertically
@@ -389,7 +389,7 @@ pathDefaults:
   # contrast [0, 16]
   rpiCameraContrast: 1
   # saturation [0, 16]
-  rpiCameraSaturation: 1
+  rpiCameraSaturation: 0
   # sharpness [0, 16]
   rpiCameraSharpness: 1
   # exposure mode.
