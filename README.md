@@ -52,6 +52,7 @@ Reboot and add to DNS:
 # install docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
+sudo usermod -aG docker rolf    # allow docker without sudo
 
 sudo docker run --rm -it --network=host bluenviron/mediamtx:latest-ffmpeg-rpi
 
