@@ -3,6 +3,13 @@
 # There are far more components and options available than what is listed here.
 # See the documentation for the full list of configuration options.
 
+logger:
+  default_level: info
+  logs:
+    viseron.components.mog2: info
+    viseron.components.darknet: info
+    viseron.components.webserver: info
+
 ## Start by adding some cameras
 gstreamer:
   camera:

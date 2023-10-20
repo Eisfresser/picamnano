@@ -56,6 +56,7 @@ sudo sh get-docker.sh
 sudo docker run --rm -it --network=host bluenviron/mediamtx:latest-ffmpeg-rpi
 
 sudo docker run \
+    --name mediamtx \
     --restart always \
     --network=host \
     --privileged \
@@ -105,23 +106,23 @@ mkdir viseron/config
 mkdir viseron/recordings
 
 sudo docker run \
+  --name viseron \
   --restart always \
-  -v /home/rolf/viseron/recordings:/recordings \
+  -v /media/rolf/SSD500GB/viseron:/recordings \
   -v /home/rolf/viseron/config:/config \
   -v /etc/localtime:/etc/localtime:ro \
   -p 8888:8888 \
-  --name viseron \
   --runtime=nvidia \
   --privileged \
   roflcoopter/jetson-nano-viseron:latest
 
 
 sudo docker run -it --rm \
+  --name viseron \
   -v /etc/localtime:/etc/localtime:ro \
-  -v /home/rolf/viseron/recordings:/recordings \
+  -v /media/rolf/SSD500GB/viseron:/recordings \
   -v /home/rolf/viseron/config:/config \
   -p 8888:8888 \
-  --name viseron \
   --runtime=nvidia \
   --privileged \
   roflcoopter/jetson-nano-viseron:latest

@@ -394,7 +394,7 @@ pathDefaults:
   rpiCameraSharpness: 1
   # exposure mode.
   # values: normal, short, long, custom
-  rpiCameraExposure: normal
+  rpiCameraExposure: long
   # auto-white-balance mode.
   # values: auto, incandescent, tungsten, fluorescent, indoor, daylight, cloudy, custom
   rpiCameraAWB: auto
