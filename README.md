@@ -13,8 +13,9 @@ raspistill
 
 # enable the following to use libcamera, but it disables raspistill
 sudo raspi-config 
-3 Interface Options / I1 Enable legacy camera support
-6 Advanced Ooptions / A8 Enable glamor graphics acceleration
+3 Interface Options / I1 Enable legacy camera support / NO
+6 Advanced Ooptions / A8 Enable glamor graphics acceleration / YES
+
 sudo nano /boot/firmware/config.txt
 # append
 camera_auto_detect=0
@@ -66,7 +67,66 @@ sudo docker run \
 
 ```
 
-WebRTC http://picam.fqp.ch:8889/cam
-HLS http://picam.fqp.ch:8888/cam/
-RTSP vlc rtsp://picam.fqp.ch:8554/cam
-RTMP vlc rtmp://picam.fqp.ch/cam
+Access video streams
+
+- WebRTC http://picam.fqp.ch:8889/cam
+- HLS http://picam.fqp.ch:8888/cam/
+- RTSP vlc rtsp://picam.fqp.ch:8554/cam
+- RTMP vlc rtmp://picam.fqp.ch/cam
+
+## Nano setup
+
+<https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare-items>
+
+Set fixed ip addr in settings, add to DNS.
+
+```ssh-copy-id -i ~/.ssh/id_rsa.pub rolf@nano.fqp.ch```
+
+Execute on nano:
+```bash
+# set root password
+sudo -i
+passwd
+# allow root ssh login with sed to deploy viseron config.yaml
+sudo vi /etc/ssh/sshd_config
+# set "PermitRootLogin yes"
+systemctl restart sshd
+```
+
+Copy key ```ssh-copy-id -i ~/.ssh/id_rsa.pub root@nano.fqp.ch```, then set ```PermitRootLogin prohibit-password``` in sshd_config.
+
+### Install Viseron
+
+<https://viseron.netlify.app/docs/documentation>
+
+```bash
+mkdir viseron
+mkdir viseron/config
+mkdir viseron/recordings
+
+sudo docker run \
+  --restart always \
+  -v /home/rolf/viseron/recordings:/recordings \
+  -v /home/rolf/viseron/config:/config \
+  -v /etc/localtime:/etc/localtime:ro \
+  -p 8888:8888 \
+  --name viseron \
+  --runtime=nvidia \
+  --privileged \
+  roflcoopter/jetson-nano-viseron:latest
+
+
+sudo docker run -it --rm \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /home/rolf/viseron/recordings:/recordings \
+  -v /home/rolf/viseron/config:/config \
+  -p 8888:8888 \
+  --name viseron \
+  --runtime=nvidia \
+  --privileged \
+  roflcoopter/jetson-nano-viseron:latest
+```
+
+<http://jano.fqp.ch:8888>
+
+

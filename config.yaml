@@ -1,0 +1,48 @@
+# Thanks for trying out Viseron!
+# This is a small walkthrough of the configuration to get you started.
+# There are far more components and options available than what is listed here.
+# See the documentation for the full list of configuration options.
+
+## Start by adding some cameras
+gstreamer:
+  camera:
+    camera_1:  # This value has to be unique across all cameras
+      name: PiNoir
+      host: picam.fqp.ch
+      port: 8554
+      path: /cam
+
+## Then add an object detector
+darknet:
+  object_detector:
+    cameras:
+      camera_1:  # Attach detector to the configured camera_1 above
+        fps: 2
+        scan_on_motion_only: true  # Scan for objects even when there is no motion
+        labels:
+          - label: cat
+            confidence: 0.5
+            trigger_recorder: true
+
+#       camera_2:  # Attach detector to the configured camera_2 above
+#         fps: 1
+#         labels:
+#           - label: person
+#             confidence: 0.75
+#             trigger_recorder: true
+
+## You can also use motion detection
+mog2:
+  motion_detector:
+    cameras:
+      camera_1:  # Attach detector to the configured camera_1 above
+        fps: 4
+        trigger_recorder: true
+
+
+# ## To tie everything together we need to configure one more component.
+nvr:
+  camera_1:  # Run NVR for camera_1
+#   camera_2:  # Run NVR for camera_2
+
+# Now you can restart Viseron and you should be good to go!
