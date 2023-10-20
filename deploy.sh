@@ -9,6 +9,7 @@ picam() {
 viseron() {
     echo "deploy viseron"
     scp config.yaml root@nano.fqp.ch:/home/rolf/viseron/config/config.yaml
+    scp monitorViseron.sh root@nano.fqp.ch:/home/rolf/monitorViseron.sh
 }
 
 if [ "$#" -ne 1 ]; then

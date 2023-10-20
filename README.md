@@ -131,4 +131,5 @@ sudo docker run -it --rm \
 
 <http://jano.fqp.ch:8888>
 
+Add cronjob to poll viseron every two minutes and restart container if necessary: ```./monitorViseron.sh install```
 
