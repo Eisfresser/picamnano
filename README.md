@@ -93,6 +93,11 @@ passwd
 sudo vi /etc/ssh/sshd_config
 # set "PermitRootLogin yes"
 systemctl restart sshd
+
+# allow docker without sudo
+sudo usermod -aG docker rolf
+# allow writing to /var/log
+sudo usermod -aG syslog rolf
 ```
 
 Copy key ```ssh-copy-id -i ~/.ssh/id_rsa.pub root@nano.fqp.ch```, then set ```PermitRootLogin prohibit-password``` in sshd_config.

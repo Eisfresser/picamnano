@@ -420,11 +420,11 @@ pathDefaults:
   # bit-depth and packing are optional.
   rpiCameraMode:
   # frames per second
-  rpiCameraFPS: 30
+  rpiCameraFPS: 15
   # period between IDR frames
-  rpiCameraIDRPeriod: 60
-  # bitrate
-  rpiCameraBitrate: 1000000
+  rpiCameraIDRPeriod: 15
+  # bitrate (initial value 1000000)
+  rpiCameraBitrate: 700000
   # H264 profile
   rpiCameraProfile: main
   # H264 level
