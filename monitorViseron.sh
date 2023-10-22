@@ -18,11 +18,12 @@ function check_and_restart_viseron() {
     local last_log=$(docker logs viseron 2>&1 | tail -n 1)
 
     # Desired string to match
-    local match_str="[viseron.watchdog.thread_watchdog] - Thread viseron.camera.camera_1 is dead, restarting"
-
+    local match_str="Thread viseron.camera.camera_1 is dead, restarting"
+    #echo "$last_log"
     # Check if the last_log matches the desired string
     if [[ "$last_log" == *"$match_str"* ]]; then
-        echo "Thread viseron.camera.camera_1 is dead, restarting viseron container..." >> ./viseron_monitor.log
+        #echo "$(date) - Thread viseron.camera.camera_1 is dead, restarting viseron container." 
+        echo "$(date) - Thread viseron.camera.camera_1 is dead, restarting viseron container..." >> ./viseron_monitor.log
         docker restart viseron
     fi
 }
@@ -41,4 +42,5 @@ if [ "$1" = "install" ]; then
     install_cron
 else
     monitor_docker
+    check_and_restart_viseron
 fi
