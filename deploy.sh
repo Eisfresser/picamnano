@@ -2,14 +2,14 @@
 
 picam() {
     echo "deploy picam"
-    scp mediamtx.yml rolf@picam.fqp.ch:/home/rolf/mediamtx.yml
+    scp mediamtx/mediamtx.yml rolf@picam.fqp.ch:/home/rolf/mediamtx.yml
     ssh rolf@picam.fqp.ch "docker restart mediamtx"
 }
 
 viseron() {
     echo "deploy viseron"
-    scp config.yaml root@nano.fqp.ch:/home/rolf/viseron/config/config.yaml
-    scp monitorViseron.sh root@nano.fqp.ch:/home/rolf/monitorViseron.sh
+    scp viseron/config.yaml root@nano.fqp.ch:/home/rolf/viseron/config/config.yaml
+    scp viseron/monitorViseron.sh root@nano.fqp.ch:/home/rolf/monitorViseron.sh
 }
 
 if [ "$#" -ne 1 ]; then
