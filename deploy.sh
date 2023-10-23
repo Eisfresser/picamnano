@@ -12,6 +12,13 @@ viseron() {
     scp viseron/monitorViseron.sh root@nano.fqp.ch:/home/rolf/monitorViseron.sh
 }
 
+frigate() {
+    echo "deploy frigate"
+    ssh root@nano.fqp.ch "mkdir -p /home/rolf/frigate && mkdir -p /media/rolf/SSD500GB/frigate/media"
+    scp frigate/compose.yml root@nano.fqp.ch:/home/rolf/frigate/compose.yml
+    scp frigate/config.yml root@nano.fqp.ch:/home/rolf/frigate/config.yml
+}
+
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 {picam|viseron|all}"
   exit 1
@@ -24,13 +31,17 @@ case "$1" in
   viseron)
     viseron
     ;;
+  frigate)
+    frigate
+    ;;
   all)
     picam
     viseron
+    frigate
     ;;
   *)
     echo "Invalid argument: $1"
-    echo "Usage: $0 {picam|viseron|all}"
+    echo "Usage: $0 {picam|viseron|frigate|all}"
     exit 1
     ;;
 esac
