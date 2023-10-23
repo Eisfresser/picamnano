@@ -16,14 +16,15 @@ monitor_webserver() {
 # Function for monitoring the logs
 monitor_camera_dead() {
     # Get the last line from the Docker logs for the viseron container
-    local last_log=$(docker logs viseron 2>&1 | tail -n 1)
+    local last_log=$(docker logs viseron 2>&1 | tail -n 8)
 
     # Desired string to match
-    local match_str="Thread viseron.camera.camera_1 is dead, restarting"
-    
+    #local match_str="Thread viseron.camera.camera_1 is dead, restarting"
+    local match_str="[ERROR   ]"
+
     # Check if the last_log matches the desired string
     if [[ "$last_log" == *"$match_str"* ]]; then
-        echo "$(date) - Thread viseron.camera.camera_1 is dead, restarting viseron container..." >> ./viseron_monitor.log
+        echo "$(date) - $match_str, restarting viseron container..." >> ./viseron_monitor.log
         RESTART_FLAG=1
     fi
 }
