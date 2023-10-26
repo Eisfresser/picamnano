@@ -3,7 +3,7 @@
 picam() {
     echo "deploy picam"
     scp mediamtx/mediamtx.yml rolf@picam.fqp.ch:/home/rolf/mediamtx.yml
-    #ssh rolf@picam.fqp.ch "docker restart mediamtx"
+    ssh rolf@picam.fqp.ch "docker restart mediamtx"
 }
 
 viseron() {

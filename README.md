@@ -138,3 +138,22 @@ sudo docker run -it --rm \
 
 Add cronjob to poll viseron every two minutes and restart container if necessary: ```./monitorViseron.sh install```
 
+Result: does not run stable and has to be restarted frequently. A video is recorded at each restart.
+
+### Install Frigate
+
+Result: does not run on Nano because ffmpeg is missing a library in the container.
+
+### Install Shinobi
+
+<https://docs.shinobi.video/installation/jetson-nano>
+
+```bash
+sudo su
+mkdir /media/rolf/SSD500GB/shinobi
+sh <(curl -s https://cdn.shinobi.video/installers/shinobi-install.sh)
+
+```
+
+<http://192.168.1.13:8080/super> admin@shinobi.video pwd:n*****
+<http://192.168.1.13:8080/> flieder10@...
