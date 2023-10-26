@@ -31,7 +31,7 @@ monitor_camera_dead() {
 
 # Function for installing the cron job
 install_cron() {
-    CRON_CMD="*/2 * * * * $SCRIPT_PATH"
+    CRON_CMD="*/30 * * * * $SCRIPT_PATH"
 
     # Add to cron if not already added
     (crontab -l | grep -v -F "$SCRIPT_PATH"; echo "$CRON_CMD" ) | crontab -

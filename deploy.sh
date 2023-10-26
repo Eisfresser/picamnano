@@ -3,19 +3,20 @@
 picam() {
     echo "deploy picam"
     scp mediamtx/mediamtx.yml rolf@picam.fqp.ch:/home/rolf/mediamtx.yml
-    ssh rolf@picam.fqp.ch "docker restart mediamtx"
+    #ssh rolf@picam.fqp.ch "docker restart mediamtx"
 }
 
 viseron() {
     echo "deploy viseron"
     scp viseron/config.yaml root@nano.fqp.ch:/home/rolf/viseron/config/config.yaml
     scp viseron/monitorViseron.sh root@nano.fqp.ch:/home/rolf/monitorViseron.sh
+    scp viseron/viseron.sh root@nano.fqp.ch:/home/rolf/viseron/viseron.sh
 }
 
 frigate() {
     echo "deploy frigate"
     ssh root@nano.fqp.ch "mkdir -p /home/rolf/frigate && mkdir -p /media/rolf/SSD500GB/frigate/media"
-    scp frigate/compose.yml root@nano.fqp.ch:/home/rolf/frigate/compose.yml
+    scp frigate/frigate.sh root@nano.fqp.ch:/home/rolf/frigate/frigate.sh
     scp frigate/config.yml root@nano.fqp.ch:/home/rolf/frigate/config.yml
 }
 

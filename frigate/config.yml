@@ -1,3 +1,20 @@
+mqtt:
+  host: has.fqp.ch
+  port: 1883
+  user: hasmq
+  password: esta-nora-77
+ffmpeg:
+  hwaccel_args: -c:v h264_cuvid
+cameras:
+  back:
+    ffmpeg:
+      inputs:
+        - path: rtsp://picam.fqp.ch:8554/cam
+          roles:
+            - detect
+    detect:
+      width: 1000
+      height: 800
 database:
   #path: /db/frigate.db
   path: /media/frigate/frigate.db
