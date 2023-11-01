@@ -157,3 +157,13 @@ sh <(curl -s https://cdn.shinobi.video/installers/shinobi-install.sh)
 
 <http://192.168.1.13:8080/super> admin@shinobi.video pwd:n*****
 <http://192.168.1.13:8080/> flieder10@...
+
+To stop shinobi: 
+
+```bash
+sudo su
+cd /root
+pm2 stop camera
+```
+
+TODO: Change video location to /media/rolf/ssd500gb/shinobi
